@@ -1,10 +1,10 @@
 package com.example.cartservice.controller;
 
 import com.example.cartservice.dto.ItemDTO;
+import com.example.cartservice.dto.ResponseDTO;
 import com.example.cartservice.service.ApplicationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -16,10 +16,9 @@ public class CartController {
         this.applicationService = applicationService;
     }
 
-    @GetMapping("/helloWorld")
-    public String helloWorld() {
-        ItemDTO newItem = new ItemDTO(1, 5000, 8, 29.99, 2);
+    @PostMapping("/items/add")
+    public ResponseEntity<ResponseDTO> addItem(@RequestBody ItemDTO newItem) {
         applicationService.addItem(newItem);
-        return "hello world";
+        return ResponseEntity.ok(new ResponseDTO(true, "Item added to cart"));
     }
 }
