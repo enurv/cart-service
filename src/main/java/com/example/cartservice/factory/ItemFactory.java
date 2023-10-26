@@ -1,13 +1,17 @@
 package com.example.cartservice.factory;
 
 import com.example.cartservice.dto.ItemDTO;
+import com.example.cartservice.entity.item.DefaultItem;
+import com.example.cartservice.entity.item.DigitalItem;
 import com.example.cartservice.entity.item.Item;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.example.cartservice.entity.item.VasItem;
 
 public class ItemFactory {
-    public List<Item> createItems(ItemDTO itemDto) {
-        return null;
+    public Item createItem(ItemDTO itemDto) {
+        if (itemDto.categoryId == 7889) {
+            return new DigitalItem();
+        } else {
+            return new DefaultItem();
+        }
     }
 }
