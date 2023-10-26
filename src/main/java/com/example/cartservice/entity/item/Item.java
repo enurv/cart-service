@@ -1,7 +1,7 @@
 package com.example.cartservice.entity.item;
 
 public abstract class Item {
-    protected int maxQuantity;
+    protected int maxQuantity = 10;
     protected int id;
     protected double price;
     protected int categoryId;

@@ -9,9 +9,9 @@ import com.example.cartservice.entity.item.VasItem;
 public class ItemFactory {
     public Item createItem(ItemDTO itemDto) {
         if (itemDto.categoryId == 7889) {
-            return new DigitalItem();
+            return new DigitalItem(itemDto.itemId, itemDto.price, itemDto.categoryId, itemDto.sellerId, itemDto.quantity);
         } else {
-            return new DefaultItem();
+            return new DefaultItem(itemDto.itemId, itemDto.price, itemDto.categoryId, itemDto.sellerId, itemDto.quantity);
         }
     }
 }
