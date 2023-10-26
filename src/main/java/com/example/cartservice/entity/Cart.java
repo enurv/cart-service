@@ -22,10 +22,9 @@ public class Cart {
 
     public void addItem(Item newItem) {
         this.items.stream().filter(item -> item.getId() == newItem.getId()).findAny().ifPresentOrElse(
-                item -> item.setQuantity(newItem.getQuantity()),
+                item -> item.setQuantity(newItem.getQuantity() + item.getQuantity()),
                 () -> this.items.add(newItem)
         );
-        System.out.println(items.get(0).toString());
     }
 
     public void removeItem(Item item) {
