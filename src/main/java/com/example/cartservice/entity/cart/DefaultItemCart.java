@@ -7,6 +7,16 @@ import static com.example.cartservice.Constants.DIGITAL_ITEM_CATEGORY_ID;
 
 public class DefaultItemCart extends Cart {
     @Override
+    public void addItem(Item newItem) {
+
+    }
+
+    @Override
+    public void removeItem(Item item) {
+
+    }
+
+    @Override
     public boolean isNewItemCompatible(Item item) {
         return item.getCategoryId() != DIGITAL_ITEM_CATEGORY_ID;
     }
