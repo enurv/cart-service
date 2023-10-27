@@ -2,6 +2,10 @@ package com.example.cartservice.dto;
 
 public class ItemDTO {
     public int itemId;
+    public int categoryId;
+    public int sellerId;
+    public double price;
+    public int quantity;
 
     public ItemDTO(int itemId, int categoryId, int sellerId, double price, int quantity) {
         this.itemId = itemId;
@@ -11,8 +15,4 @@ public class ItemDTO {
         this.quantity = quantity;
     }
 
-    public int categoryId;
-    public int sellerId;
-    public double price;
-    public int quantity;
 }

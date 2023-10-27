@@ -1,7 +1,7 @@
 package com.example.cartservice.entity.item;
 
 public abstract class Item {
-    protected int maxQuantity = 10;
+    protected int maxQuantity;
     protected int id;
     protected double price;
     protected int categoryId;
@@ -14,18 +14,6 @@ public abstract class Item {
         this.categoryId = categoryId;
         this.sellerId = sellerId;
         this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "maxQuantity=" + maxQuantity +
-                ", id=" + id +
-                ", price=" + price +
-                ", categoryId=" + categoryId +
-                ", sellerId=" + sellerId +
-                ", quantity=" + quantity +
-                '}';
     }
 
     public int getQuantity() {
