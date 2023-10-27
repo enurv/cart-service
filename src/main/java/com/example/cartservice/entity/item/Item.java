@@ -2,14 +2,14 @@ package com.example.cartservice.entity.item;
 
 public abstract class Item {
     protected int maxQuantity;
-    protected int id;
+    protected int itemId;
     protected double price;
     protected int categoryId;
     protected int sellerId;
     protected int quantity;
 
-    public Item(int id, double price, int categoryId, int sellerId, int quantity) {
-        this.id = id;
+    public Item(int itemId, double price, int categoryId, int sellerId, int quantity) {
+        this.itemId = itemId;
         this.price = price;
         this.categoryId = categoryId;
         this.sellerId = sellerId;
@@ -36,7 +36,7 @@ public abstract class Item {
     }
 
     public int getId() {
-        return id;
+        return itemId;
     }
 
     public int getCategoryId() {

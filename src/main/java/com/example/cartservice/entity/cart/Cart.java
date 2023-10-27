@@ -17,7 +17,32 @@ public abstract class Cart {
     private Promotion promotion;
     protected List<Item> items = new ArrayList<Item>();
 
+    protected Item findItemById(int id) {
+        return items.stream()
+                .filter(item -> item.getId() == id)
+                .findAny()
+                .orElse(null);
+    }
+
     public abstract void addItem(Item newItem);
+
+    protected void addExistingItem(Item existingItem, Item newItem) {
+        if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > MAX_ITEM_NUMBER) {
+            //TO-DO: throw error
+            System.out.println("Max item number reached");
+        } else {
+            existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
+        }
+    }
+
+    protected void addNewItem(Item newItem) {
+        if (items.size() >= MAX_UNIQUE_ITEM_NUMBER) {
+            //TO-DO: throw error
+            System.out.println("Max unique item number reached");
+        } else {
+            items.add(newItem);
+        }
+    }
 
     public abstract void removeItem(Item item);
 
@@ -31,8 +56,5 @@ public abstract class Cart {
 
     private void calculateTotalPrice() {
     }
-
-    public abstract boolean isNewItemCompatible(Item item);
-
 
 }

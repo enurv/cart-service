@@ -8,8 +8,8 @@ public class DefaultItem extends Item {
     private final int MAX_VAS_ITEM_NUMBER = 3;
     private List<VasItem> vasItems;
 
-    public DefaultItem(int id, double price, int categoryId, int sellerId, int quantity) {
-        super(id, price, categoryId, sellerId, quantity);
+    public DefaultItem(int itemId, double price, int categoryId, int sellerId, int quantity) {
+        super(itemId, price, categoryId, sellerId, quantity);
         this.maxQuantity = Constants.MAX_DEFAULT_ITEM_QUANTITY;
     }
 

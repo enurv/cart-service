@@ -1,8 +1,10 @@
 package com.example.cartservice.service;
 
 import com.example.cartservice.dto.ItemDTO;
+import com.example.cartservice.dto.VasItemDTO;
 import com.example.cartservice.entity.cart.Cart;
 import com.example.cartservice.entity.item.Item;
+import com.example.cartservice.entity.item.VasItem;
 import com.example.cartservice.factory.CartFactory;
 import com.example.cartservice.factory.ItemFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,12 @@ public class ApplicationService {
         cart.addItem(newItem);
     }
 
-    public void initCart(int categoryId) {
+    public void addVasItem(VasItemDTO vasItemDto) {
+        VasItem newVasItem = new VasItem(vasItemDto.itemId, vasItemDto.vasItemId, vasItemDto.price, vasItemDto.categoryId, vasItemDto.sellerId, vasItemDto.quantity);
+        cart.addItem(newVasItem);
+    }
+
+    private void initCart(int categoryId) {
         cart = cartFactory.createCart(categoryId);
     }
 

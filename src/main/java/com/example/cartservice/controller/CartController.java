@@ -2,6 +2,7 @@ package com.example.cartservice.controller;
 
 import com.example.cartservice.dto.ItemDTO;
 import com.example.cartservice.dto.ResponseDTO;
+import com.example.cartservice.dto.VasItemDTO;
 import com.example.cartservice.service.ApplicationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,4 +22,11 @@ public class CartController {
         applicationService.addItem(newItem);
         return ResponseEntity.ok(new ResponseDTO(true, "Item added to cart"));
     }
+
+    @PostMapping("/items/add/vas")
+    public ResponseEntity<ResponseDTO> addVasItem(@RequestBody VasItemDTO newVasItem) {
+        return ResponseEntity.ok(new ResponseDTO(true, "VasItem added to cart"));
+    }
+
+
 }
