@@ -2,15 +2,10 @@ package com.example.cartservice.service;
 
 import com.example.cartservice.dto.ItemDTO;
 import com.example.cartservice.entity.cart.Cart;
-import com.example.cartservice.entity.cart.DefaultCart;
-import com.example.cartservice.entity.cart.DigitalCart;
-import com.example.cartservice.entity.item.DefaultItem;
-import com.example.cartservice.entity.item.DigitalItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.factory.CartFactory;
 import com.example.cartservice.factory.ItemFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,10 +21,10 @@ public class ApplicationService {
     }
 
     public void addItem(ItemDTO itemDto) {
-        Item newItem = itemFactory.createItem(itemDto);
         if (cart == null) {
-            initCart(newItem.getCategoryId());
+            initCart(itemDto.categoryId);
         }
+        Item newItem = itemFactory.createItem(itemDto);
         cart.addItem(newItem);
     }
 
