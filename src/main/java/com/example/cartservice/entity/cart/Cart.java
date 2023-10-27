@@ -19,21 +19,46 @@ public abstract class Cart {
 
     public void addItem(Item newItem) {
         if (isNewItemCompatible(newItem)) {
-            this.items.stream().filter(item -> item.getId() == newItem.getId()).findAny().ifPresentOrElse(
-                    item -> item.setQuantity(newItem.getQuantity() + item.getQuantity()),
-                    () -> this.items.add(newItem)
-            );
+            Item existingItem = findItemById(newItem.getId());
+            if (existingItem != null) {
+                addExistingItem(existingItem, newItem);
+            } else {
+                addNewItem(newItem);
+            }
         } else {
-
+            //TO-DO: throw error
+            System.out.println("Item is not compatible");
         }
+    }
 
+    private void addExistingItem(Item existingItem, Item newItem) {
+        if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > MAX_ITEM_NUMBER) {
+            //TO-DO: throw error
+            System.out.println("Max item number reached");
+        } else {
+            existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
+        }
+    }
+
+    private void addNewItem(Item newItem) {
+        if (items.size() >= MAX_UNIQUE_ITEM_NUMBER) {
+            //TO-DO: throw error
+            System.out.println("Max unique item number reached");
+        } else {
+            items.add(newItem);
+        }
+    }
+
+    private Item findItemById(int id) {
+        return items.stream()
+                .filter(item -> item.getId() == id)
+                .findAny()
+                .orElse(null);
     }
 
     public void removeItem(Item item) {
     }
 
-    public void resetItems() {
-    }
 
     public List<Item> getCartItems() {
         return null;
