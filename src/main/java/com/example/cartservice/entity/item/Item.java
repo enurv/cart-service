@@ -32,6 +32,14 @@ public abstract class Item {
         return quantity;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public int getSellerId() {
+        return sellerId;
+    }
+
     public void setQuantity(int quantity) {
         if (quantity > maxQuantity) {
             //TO-DO: throw error
@@ -41,5 +49,9 @@ public abstract class Item {
 
     public int getId() {
         return id;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
     }
 }
