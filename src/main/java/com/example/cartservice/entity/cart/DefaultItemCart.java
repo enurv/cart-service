@@ -15,7 +15,7 @@ public class DefaultItemCart extends Cart {
         } else if (newItem instanceof VasItem) {
             addVasItem((VasItem) newItem);
         } else {
-            //TO-DO: throw error
+            //TODO: throw error
             System.out.println("Item is not compatible");
         }
     }

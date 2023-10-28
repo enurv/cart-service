@@ -16,7 +16,7 @@ public class DigitalItemCart extends Cart {
                 addNewItem(newItem);
             }
         } else {
-            //TO-DO: throw error
+            //TODO: throw error
             System.out.println("Item is not compatible");
         }
     }

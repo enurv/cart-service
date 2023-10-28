@@ -28,7 +28,7 @@ public abstract class Cart {
 
     protected void addExistingItem(Item existingItem, Item newItem) {
         if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > MAX_ITEM_NUMBER) {
-            //TO-DO: throw error
+            //TODO: throw error
             System.out.println("Max item number reached");
         } else {
             existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
@@ -37,7 +37,7 @@ public abstract class Cart {
 
     protected void addNewItem(Item newItem) {
         if (items.size() >= MAX_UNIQUE_ITEM_NUMBER) {
-            //TO-DO: throw error
+            //TODO: throw error
             System.out.println("Max unique item number reached");
         } else {
             items.add(newItem);
