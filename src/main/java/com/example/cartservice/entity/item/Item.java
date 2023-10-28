@@ -32,7 +32,7 @@ public abstract class Item {
 
     public void setQuantity(int quantity) {
         if (quantity > maxQuantity) {
-            throw new MaximumItemLimitExceededException("You cannot add more than " + maxQuantity + " items.");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + maxQuantity + " of the same item.");
         }
         this.quantity = quantity;
     }

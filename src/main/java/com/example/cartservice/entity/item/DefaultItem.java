@@ -37,7 +37,7 @@ public class DefaultItem extends Item {
 
     private void addExistingVasItem(VasItem existingVasItem, VasItem newVasItem) {
         if (vasItems.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newVasItem.getQuantity() > Constants.MAX_ITEM_QUANTITY) {
-            throw new MaximumItemLimitExceededException("You cannot add more than " + Constants.MAX_ITEM_QUANTITY + " items.");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + Constants.MAX_ITEM_QUANTITY + " of the same item.");
         } else {
             existingVasItem.setQuantity(newVasItem.getQuantity() + existingVasItem.getQuantity());
         }

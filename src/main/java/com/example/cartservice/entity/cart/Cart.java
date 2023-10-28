@@ -30,7 +30,7 @@ public abstract class Cart {
 
     protected void addExistingItem(Item existingItem, Item newItem) {
         if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > MAX_ITEM_NUMBER) {
-            throw new MaximumItemLimitExceededException("You cannot add more than " + MAX_ITEM_NUMBER + " items.");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + MAX_ITEM_NUMBER + "of the item.");
         } else {
             existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
         }
