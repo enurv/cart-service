@@ -1,6 +1,8 @@
 package com.example.cartservice.entity.item;
 
 import com.example.cartservice.Constants;
+import com.example.cartservice.exception.MaximumItemLimitExceededException;
+import com.example.cartservice.exception.MaximumUniqueItemLimitExceededException;
 
 import java.util.List;
 
@@ -27,8 +29,7 @@ public class DefaultItem extends Item {
 
     private void addNewVasItem(VasItem newVasItem) {
         if (vasItems.size() >= Constants.MAX_UNIQUE_VAS_ITEM_NUMBER) {
-            //TODO: throw error
-            System.out.println("Max unique vasItem number reached");
+            throw new MaximumUniqueItemLimitExceededException("You cannot add more than " + Constants.MAX_UNIQUE_VAS_ITEM_NUMBER + " unique vas items.");
         } else {
             vasItems.add(newVasItem);
         }
@@ -36,8 +37,7 @@ public class DefaultItem extends Item {
 
     private void addExistingVasItem(VasItem existingVasItem, VasItem newVasItem) {
         if (vasItems.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newVasItem.getQuantity() > Constants.MAX_ITEM_QUANTITY) {
-            //TODO: throw error
-            System.out.println("Max item number reached");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + Constants.MAX_ITEM_QUANTITY + " items.");
         } else {
             existingVasItem.setQuantity(newVasItem.getQuantity() + existingVasItem.getQuantity());
         }

@@ -1,6 +1,7 @@
 package com.example.cartservice.entity.item;
 
 import com.example.cartservice.Constants;
+import com.example.cartservice.exception.MaximumItemLimitExceededException;
 
 public abstract class Item {
     protected int maxQuantity = Constants.MAX_ITEM_QUANTITY;
@@ -31,8 +32,7 @@ public abstract class Item {
 
     public void setQuantity(int quantity) {
         if (quantity > maxQuantity) {
-            //TODO: throw error
-            System.out.println("Max item number reached");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + maxQuantity + " items.");
         }
         this.quantity = quantity;
     }

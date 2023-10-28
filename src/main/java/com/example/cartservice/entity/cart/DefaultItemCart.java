@@ -5,6 +5,7 @@ import com.example.cartservice.Constants;
 import com.example.cartservice.entity.item.DefaultItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.item.VasItem;
+import com.example.cartservice.exception.NonCompatibleItemTypeException;
 
 
 public class DefaultItemCart extends Cart {
@@ -15,8 +16,7 @@ public class DefaultItemCart extends Cart {
         } else if (newItem instanceof VasItem) {
             addVasItem((VasItem) newItem);
         } else {
-            //TODO: throw error
-            System.out.println("Item is not compatible");
+            throw new NonCompatibleItemTypeException("You are trying to add a digital item to a default item cart");
         }
     }
 

@@ -2,6 +2,8 @@ package com.example.cartservice.entity.cart;
 
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.promotion.Promotion;
+import com.example.cartservice.exception.MaximumItemLimitExceededException;
+import com.example.cartservice.exception.MaximumUniqueItemLimitExceededException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +30,7 @@ public abstract class Cart {
 
     protected void addExistingItem(Item existingItem, Item newItem) {
         if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > MAX_ITEM_NUMBER) {
-            //TODO: throw error
-            System.out.println("Max item number reached");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + MAX_ITEM_NUMBER + " items.");
         } else {
             existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
         }
@@ -37,8 +38,7 @@ public abstract class Cart {
 
     protected void addNewItem(Item newItem) {
         if (items.size() >= MAX_UNIQUE_ITEM_NUMBER) {
-            //TODO: throw error
-            System.out.println("Max unique item number reached");
+            throw new MaximumUniqueItemLimitExceededException("You cannot add more than " + MAX_UNIQUE_ITEM_NUMBER + " unique items.");
         } else {
             items.add(newItem);
         }

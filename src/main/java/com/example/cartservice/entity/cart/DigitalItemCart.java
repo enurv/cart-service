@@ -3,6 +3,7 @@ package com.example.cartservice.entity.cart;
 import com.example.cartservice.Constants;
 import com.example.cartservice.entity.item.DigitalItem;
 import com.example.cartservice.entity.item.Item;
+import com.example.cartservice.exception.NonCompatibleItemTypeException;
 
 
 public class DigitalItemCart extends Cart {
@@ -16,8 +17,7 @@ public class DigitalItemCart extends Cart {
                 addNewItem(newItem);
             }
         } else {
-            //TODO: throw error
-            System.out.println("Item is not compatible");
+            throw new NonCompatibleItemTypeException("You are trying to add a default item to a digital item cart.");
         }
     }
 
