@@ -20,7 +20,7 @@ public class DefaultItemCart extends Cart {
         }
     }
 
-    public void addDefaultItem(DefaultItem newDefaultItem) {
+    private void addDefaultItem(DefaultItem newDefaultItem) {
         Item existingItem = findItemById(newDefaultItem.getId());
         if (existingItem != null) {
             addExistingItem(existingItem, newDefaultItem);
@@ -29,10 +29,12 @@ public class DefaultItemCart extends Cart {
         }
     }
 
-    public void addVasItem(VasItem newVasItem) {
-
+    private void addVasItem(VasItem newVasItem) {
+        DefaultItem defaultItem = (DefaultItem) findItemById(newVasItem.getId());
+        defaultItem.addVasItem(newVasItem);
     }
-    
+
+
     @Override
     public void removeItem(Item item) {
 
