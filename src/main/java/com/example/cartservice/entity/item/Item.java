@@ -10,12 +10,11 @@ public abstract class Item {
     protected int sellerId;
     protected int quantity;
 
-    public Item(int itemId, double price, int categoryId, int sellerId, int quantity) {
+    public Item(int itemId, double price, int categoryId, int sellerId) {
         this.itemId = itemId;
         this.price = price;
         this.categoryId = categoryId;
         this.sellerId = sellerId;
-        this.quantity = quantity;
     }
 
     public int getQuantity() {
@@ -32,7 +31,8 @@ public abstract class Item {
 
     public void setQuantity(int quantity) {
         if (quantity > maxQuantity) {
-            //TO-DO: throw error
+            //TODO: throw error
+            System.out.println("Max item number reached");
         }
         this.quantity = quantity;
     }

@@ -8,7 +8,8 @@ public class DefaultItem extends Item {
     private List<VasItem> vasItems;
 
     public DefaultItem(int itemId, double price, int categoryId, int sellerId, int quantity) {
-        super(itemId, price, categoryId, sellerId, quantity);
+        super(itemId, price, categoryId, sellerId);
+        setQuantity(quantity);
     }
 
     public List<VasItem> getVasItems() {
