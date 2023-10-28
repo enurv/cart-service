@@ -1,7 +1,9 @@
 package com.example.cartservice.entity.item;
 
+import com.example.cartservice.Constants;
+
 public abstract class Item {
-    protected int maxQuantity;
+    protected int maxQuantity = Constants.MAX_ITEM_QUANTITY;
     protected int itemId;
     protected double price;
     protected int categoryId;
