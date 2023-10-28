@@ -17,13 +17,13 @@ public class CartController {
         this.applicationService = applicationService;
     }
 
-    @PostMapping("/items/add")
+    @PostMapping("/item/add")
     public ResponseEntity<ResponseDTO> addItem(@RequestBody ItemDTO newItem) {
         applicationService.addItem(newItem);
         return ResponseEntity.ok(new ResponseDTO(true, "Item added to cart"));
     }
 
-    @PostMapping("/items/add/vas")
+    @PostMapping("/item/add/vas")
     public ResponseEntity<ResponseDTO> addVasItem(@RequestBody VasItemDTO newVasItem) {
         return ResponseEntity.ok(new ResponseDTO(true, "VasItem added to cart"));
     }
