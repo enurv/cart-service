@@ -31,7 +31,7 @@ public class ApplicationService {
     }
 
     public void addVasItem(VasItemDTO vasItemDto) {
-        VasItem newVasItem = new VasItem(vasItemDto.itemId, vasItemDto.vasItemId, vasItemDto.price, vasItemDto.categoryId, vasItemDto.sellerId, vasItemDto.quantity);
+        VasItem newVasItem = itemFactory.createVasItem(vasItemDto);
         cart.addItem(newVasItem);
     }
 
