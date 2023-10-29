@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(MaximumItemLimitExceededException.class)
-    public ResponseEntity<ResponseDTO> handleBadRequestException(BadRequestException exception) {
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ResponseDTO> handleBadRequestExceptions(BadRequestException exception) {
         ResponseDTO errorResponse = new ResponseDTO(false, exception.getMessage());
         return new ResponseEntity<ResponseDTO>(errorResponse, HttpStatus.BAD_REQUEST);
     }
