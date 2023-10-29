@@ -26,6 +26,11 @@ public class DigitalItemCart extends Cart {
 
     }
 
+    @Override
+    protected void selectPromotion() {
+
+    }
+
 
     public boolean isNewItemCompatible(Item item) {
         return item instanceof DigitalItem;

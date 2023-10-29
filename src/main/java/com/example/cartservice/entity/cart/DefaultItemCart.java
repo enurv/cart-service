@@ -40,4 +40,9 @@ public class DefaultItemCart extends Cart {
 
     }
 
+    @Override
+    protected void selectPromotion() {
+
+    }
+
 }

@@ -51,10 +51,12 @@ public abstract class Cart {
     }
 
     public double getTotalPrice() {
-        return 0;
+        return totalPrice;
     }
 
-    private void calculateTotalPrice() {
+    protected abstract void selectPromotion();
+
+    protected void calculateTotalPrice() {
     }
 
 }
