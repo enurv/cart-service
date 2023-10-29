@@ -10,6 +10,15 @@ public class TotalPricePromotion extends Promotion {
 
     @Override
     public double calculateDiscount(Cart cart) {
-        return 0;
+        double totalPrice = cart.getTotalPrice();
+        if (totalPrice < 5000) {
+            return 250;
+        } else if (totalPrice < 10000) {
+            return 500;
+        } else if (totalPrice < 50000) {
+            return 1000;
+        } else {
+            return 2000;
+        }
     }
 }
