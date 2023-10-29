@@ -1,6 +1,7 @@
 package com.example.cartservice.entity.item;
 
 import com.example.cartservice.Constants;
+import com.example.cartservice.exception.InvalidVasItemException;
 import com.example.cartservice.exception.MaximumItemLimitExceededException;
 import com.example.cartservice.exception.MaximumUniqueItemLimitExceededException;
 
@@ -28,6 +29,10 @@ public class DefaultItem extends Item {
     }
 
     private void addNewVasItem(VasItem newVasItem) {
+        if (!(categoryId == Constants.ELECTRONICS_CATEGORY_ID) && !(categoryId == Constants.FURNITURE_CATEGORY_ID)) {
+            throw new InvalidVasItemException("You cannot add a vas item to this item.");
+        }
+
         if (vasItems.size() >= Constants.MAX_UNIQUE_VAS_ITEM_NUMBER) {
             throw new MaximumUniqueItemLimitExceededException("You cannot add more than " + Constants.MAX_UNIQUE_VAS_ITEM_NUMBER + " unique vas items.");
         } else {
