@@ -1,5 +1,6 @@
 package com.example.cartservice.entity.cart;
 
+import com.example.cartservice.Constants;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.promotion.Promotion;
 import com.example.cartservice.exception.MaximumItemLimitExceededException;
@@ -9,14 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public abstract class Cart {
-    protected final int MAX_ITEM_NUMBER = 30;
-    protected final int MAX_UNIQUE_ITEM_NUMBER = 10;
-    private final int MAX_TOTAL_PRICE = 500000;
+import static com.example.cartservice.Constants.MAX_ITEM_NUMBER;
 
+public abstract class Cart {
     private UUID id;
-    private double totalPrice;
-    private Promotion promotion;
+    protected double totalPrice;
+    protected Promotion promotion;
+    protected double totalDiscount;
     protected List<Item> items = new ArrayList<Item>();
 
     protected Item findItemById(int id) {
@@ -29,7 +29,7 @@ public abstract class Cart {
     public abstract void addItem(Item newItem);
 
     protected void addExistingItem(Item existingItem, Item newItem) {
-        if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > MAX_ITEM_NUMBER) {
+        if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > Constants.MAX_ITEM_NUMBER) {
             throw new MaximumItemLimitExceededException("You cannot add more than " + MAX_ITEM_NUMBER + "of the item.");
         } else {
             existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
@@ -37,8 +37,8 @@ public abstract class Cart {
     }
 
     protected void addNewItem(Item newItem) {
-        if (items.size() >= MAX_UNIQUE_ITEM_NUMBER) {
-            throw new MaximumUniqueItemLimitExceededException("You cannot add more than " + MAX_UNIQUE_ITEM_NUMBER + " unique items.");
+        if (items.size() >= Constants.MAX_UNIQUE_ITEM_NUMBER) {
+            throw new MaximumUniqueItemLimitExceededException("You cannot add more than " + Constants.MAX_UNIQUE_ITEM_NUMBER + " unique items.");
         } else {
             items.add(newItem);
         }
