@@ -33,10 +33,6 @@ public class DigitalItemCart extends Cart {
         calculateDiscount();
     }
 
-    @Override
-    public void removeItem(Item item) {
-
-    }
 
     @Override
     protected void calculateDiscount() {

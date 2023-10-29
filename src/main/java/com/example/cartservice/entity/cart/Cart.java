@@ -44,7 +44,13 @@ public abstract class Cart {
         }
     }
 
-    public abstract void removeItem(Item item);
+    public void removeItem(int itemId) {
+        items.removeIf(existingItem -> existingItem.getId() == itemId);
+        calculateTotalPrice();
+        calculateDiscount();
+    }
+
+    ;
 
     public List<Item> getCartItems() {
         return null;

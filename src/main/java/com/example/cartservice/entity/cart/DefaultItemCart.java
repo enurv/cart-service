@@ -46,11 +46,6 @@ public class DefaultItemCart extends Cart {
 
 
     @Override
-    public void removeItem(Item item) {
-
-    }
-
-    @Override
     protected void calculateDiscount() {
         promotion = promotionService.selectBestPromotion(this);
         totalDiscount = promotion.calculateDiscount(this);
