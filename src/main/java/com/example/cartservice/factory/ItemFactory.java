@@ -7,6 +7,7 @@ import com.example.cartservice.entity.item.DefaultItem;
 import com.example.cartservice.entity.item.DigitalItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.item.VasItem;
+import com.example.cartservice.exception.InvalidVasItemException;
 import org.springframework.stereotype.Component;
 
 
@@ -24,8 +25,7 @@ public class ItemFactory {
         if (vasItemDto.categoryId == Constants.VAS_ITEM_CATEGORY_ID && vasItemDto.sellerId == Constants.VAS_ITEM_SELLER_ID) {
             return new VasItem(vasItemDto.itemId, vasItemDto.vasItemId, vasItemDto.price, vasItemDto.categoryId, vasItemDto.sellerId, vasItemDto.quantity);
         } else {
-            //throw new Exception("Invalid VAS item");
-            return null;
+            throw new InvalidVasItemException("Invalid VAS item");
         }
     }
 }
