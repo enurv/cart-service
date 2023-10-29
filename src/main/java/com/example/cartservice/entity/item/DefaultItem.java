@@ -5,10 +5,11 @@ import com.example.cartservice.exception.InvalidVasItemException;
 import com.example.cartservice.exception.MaximumItemLimitExceededException;
 import com.example.cartservice.exception.MaximumUniqueItemLimitExceededException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultItem extends Item {
-    private List<VasItem> vasItems;
+    private List<VasItem> vasItems = new ArrayList<VasItem>();
 
     public DefaultItem(int itemId, double price, int categoryId, int sellerId, int quantity) {
         super(itemId, price, categoryId, sellerId);
