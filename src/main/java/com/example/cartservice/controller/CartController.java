@@ -1,9 +1,6 @@
 package com.example.cartservice.controller;
 
-import com.example.cartservice.dto.CartDTO;
-import com.example.cartservice.dto.ItemDTO;
-import com.example.cartservice.dto.ResponseDTO;
-import com.example.cartservice.dto.VasItemDTO;
+import com.example.cartservice.dto.*;
 import com.example.cartservice.service.ApplicationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +34,8 @@ public class CartController {
     }
 
     @GetMapping("/cart/display")
-    public ResponseEntity<CartDTO> displayCart() {
-        CartDTO cart = applicationService.displayCart();
+    public ResponseEntity<CartDisplayDTO> displayCart() {
+        CartDisplayDTO cart = applicationService.displayCart();
         return ResponseEntity.ok(cart);
     }
 

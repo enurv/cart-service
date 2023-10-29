@@ -3,11 +3,10 @@ package com.example.cartservice.dto;
 import java.util.List;
 
 public class DigitalItemCartDTO extends CartDTO {
-    public boolean result;
-    public List<DigitalItemDTO> message;
+    public List<DigitalItemDTO> items;
 
-    public DigitalItemCartDTO(boolean result, List<DigitalItemDTO> message) {
-        this.result = result;
-        this.message = message;
+    public DigitalItemCartDTO(List<DigitalItemDTO> items, double totalPrice, int appliedPromotionId, double totalDiscount) {
+        super(totalPrice, appliedPromotionId, totalDiscount);
+        this.items = items;
     }
 }
