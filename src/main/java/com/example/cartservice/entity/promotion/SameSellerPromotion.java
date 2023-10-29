@@ -13,7 +13,7 @@ public class SameSellerPromotion extends Promotion {
 
     @Override
     public double calculateDiscount(Cart cart) {
-        if (!itemsFromSameSellerId(cart.getCartItems())) {
+        if (!itemsFromSameSellerId(cart.getItems())) {
             return 0;
         } else {
             return cart.getTotalPrice() * Constants.SAME_SELLER_PROMOTION_DISCOUNT_RATE;

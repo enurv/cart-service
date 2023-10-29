@@ -1,5 +1,6 @@
 package com.example.cartservice.controller;
 
+import com.example.cartservice.dto.CartDTO;
 import com.example.cartservice.dto.ItemDTO;
 import com.example.cartservice.dto.ResponseDTO;
 import com.example.cartservice.dto.VasItemDTO;
@@ -17,22 +18,28 @@ public class CartController {
         this.applicationService = applicationService;
     }
 
-    @PostMapping("/item/add")
+    @PostMapping("/items/add")
     public ResponseEntity<ResponseDTO> addItem(@RequestBody ItemDTO newItem) {
         applicationService.addItem(newItem);
         return ResponseEntity.ok(new ResponseDTO(true, "Item added to cart"));
     }
 
-    @PostMapping("/item/add/vas")
+    @PostMapping("/items/add/vas")
     public ResponseEntity<ResponseDTO> addVasItem(@RequestBody VasItemDTO newVasItem) {
         applicationService.addVasItem(newVasItem);
         return ResponseEntity.ok(new ResponseDTO(true, "VasItem added to cart"));
     }
 
-    @PostMapping("/item/remove")
+    @PostMapping("/items/remove")
     public ResponseEntity<ResponseDTO> removeItem(@RequestBody ItemDTO removeItem) {
         applicationService.removeItem(removeItem);
         return ResponseEntity.ok(new ResponseDTO(true, "Item successfully removed from cart"));
+    }
+
+    @GetMapping("/cart/display")
+    public ResponseEntity<CartDTO> displayCart() {
+        CartDTO cart = applicationService.displayCart();
+        return ResponseEntity.ok(cart);
     }
 
     @DeleteMapping("/cart/reset")

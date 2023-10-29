@@ -14,7 +14,7 @@ public class CategoryPromotion extends Promotion {
     @Override
     public double calculateDiscount(Cart cart) {
         double totalAmount = 0.0;
-        List<Item> items = cart.getCartItems();
+        List<Item> items = cart.getItems();
         for (Item item : items) {
             if (item.getCategoryId() == (Constants.CATEGORY_SELLER_PROMOTION_CATEGORY_ID)) {
                 totalAmount += item.getPrice() * item.getQuantity();

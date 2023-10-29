@@ -21,7 +21,6 @@ public class PromotionService {
     }
 
     public Promotion selectBestPromotion(Cart cart) {
-        System.out.println(cart);
         Promotion bestPromotion = null;
         double bestDiscount = 0;
         for (Promotion promotion : promotions) {

@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.example.cartservice.Constants.MAX_ITEM_NUMBER;
 
 public abstract class Cart {
+
     private UUID id;
     protected double totalPrice;
     protected Promotion promotion;
@@ -30,7 +30,7 @@ public abstract class Cart {
 
     protected void addExistingItem(Item existingItem, Item newItem) {
         if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > Constants.MAX_ITEM_NUMBER) {
-            throw new MaximumItemLimitExceededException("You cannot add more than " + MAX_ITEM_NUMBER + "of the item.");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + Constants.MAX_ITEM_NUMBER + "of the item.");
         } else {
             existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
         }
@@ -50,11 +50,9 @@ public abstract class Cart {
         calculateDiscount();
     }
 
-    ;
+    protected abstract void calculateDiscount();
 
-    public List<Item> getCartItems() {
-        return null;
-    }
+    protected abstract void calculateTotalPrice();
 
     public void resetCart() {
         items.clear();
@@ -63,12 +61,20 @@ public abstract class Cart {
         totalPrice = 0;
     }
 
+    public int getPromotionId() {
+        return promotion.getPromotionId();
+    }
+
     public double getTotalPrice() {
         return totalPrice;
     }
 
-    protected abstract void calculateDiscount();
+    public double getTotalDiscount() {
+        return totalDiscount;
+    }
 
-    protected abstract void calculateTotalPrice();
+    public List<Item> getItems() {
+        return items;
+    }
 
 }
