@@ -16,4 +16,6 @@ public class Constants {
     public static final int CATEGORY_SELLER_PROMOTION_ID = 5676;
     public static final int TOTAL_PRICE_PROMOTION_ID = 1232;
     public static final double SAME_SELLER_PROMOTION_DISCOUNT_RATE = 0.1;
+    public static final double CATEGORY_SELLER_PROMOTION_DISCOUNT_RATE = 0.05;
+    public static final double CATEGORY_SELLER_PROMOTION_CATEGORY_ID = 3003;
 }

@@ -2,6 +2,9 @@ package com.example.cartservice.entity.promotion;
 
 import com.example.cartservice.Constants;
 import com.example.cartservice.entity.cart.Cart;
+import com.example.cartservice.entity.item.Item;
+
+import java.util.List;
 
 public class CategoryPromotion extends Promotion {
     public CategoryPromotion() {
@@ -10,6 +13,14 @@ public class CategoryPromotion extends Promotion {
 
     @Override
     public double calculateDiscount(Cart cart) {
-        return 0;
+        double totalAmount = 0.0;
+        List<Item> items = cart.getCartItems();
+        for (Item item : items) {
+            if (item.getCategoryId() == (Constants.CATEGORY_SELLER_PROMOTION_CATEGORY_ID)) {
+                totalAmount += item.getPrice() * item.getQuantity();
+            }
+        }
+
+        return totalAmount * Constants.CATEGORY_SELLER_PROMOTION_DISCOUNT_RATE;
     }
 }
