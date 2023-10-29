@@ -3,8 +3,9 @@ package com.example.cartservice.entity.cart;
 import com.example.cartservice.entity.item.DigitalItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.exception.NonCompatibleItemTypeException;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class DigitalItemCart extends Cart {
     @Override
     public void addItem(Item newItem) {

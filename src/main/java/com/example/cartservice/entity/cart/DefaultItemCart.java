@@ -4,8 +4,9 @@ import com.example.cartservice.entity.item.DefaultItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.item.VasItem;
 import com.example.cartservice.exception.NonCompatibleItemTypeException;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class DefaultItemCart extends Cart {
     @Override
     public void addItem(Item newItem) {
