@@ -4,6 +4,7 @@ import com.example.cartservice.Constants;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.promotion.Promotion;
 import com.example.cartservice.exception.MaximumItemLimitExceededException;
+import com.example.cartservice.exception.MaximumPriceLimitExceededException;
 import com.example.cartservice.exception.MaximumUniqueItemLimitExceededException;
 
 import java.util.ArrayList;
@@ -42,23 +43,37 @@ public abstract class Cart {
         } else {
             items.add(newItem);
         }
+        calculatePrices();
+        if (isPriceLimitExceeded()) {
+            removeItem(newItem.getId());
+            calculatePrices();
+            throw new MaximumPriceLimitExceededException("You cannot add more than " + Constants.MAX_PRICE + " price.");
+        }
     }
 
     public void removeItem(int itemId) {
         items.removeIf(existingItem -> existingItem.getId() == itemId);
-        calculateTotalPrice();
-        calculateDiscount();
+        calculatePrices();
     }
 
     protected abstract void calculateDiscount();
 
     protected abstract void calculateTotalPrice();
 
+    protected boolean isPriceLimitExceeded() {
+        return totalPrice - totalDiscount > Constants.MAX_PRICE;
+    }
+
     public void resetCart() {
         items.clear();
         promotion = null;
         totalDiscount = 0;
         totalPrice = 0;
+    }
+
+    protected void calculatePrices() {
+        calculateTotalPrice();
+        calculateDiscount();
     }
 
     public int getPromotionId() {

@@ -48,7 +48,8 @@ public class DefaultItem extends Item {
         }
     }
 
-    public void removeVasItem(VasItem vasItem) {
+    public void removeVasItem(int vasItemId) {
+        vasItems.removeIf(existingItem -> existingItem.getId() == vasItemId);
     }
 
     private VasItem findVasItemById(int id) {

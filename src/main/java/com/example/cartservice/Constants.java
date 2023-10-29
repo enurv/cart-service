@@ -3,7 +3,7 @@ package com.example.cartservice;
 public class Constants {
     public static final int MAX_ITEM_NUMBER = 30;
     public static final int MAX_UNIQUE_ITEM_NUMBER = 10;
-    public static int MAX_TOTAL_PRICE = 500000;
+    public static int MAX_PRICE = 500000;
     public static final int FURNITURE_CATEGORY_ID = 1001;
     public static final int ELECTRONICS_CATEGORY_ID = 3004;
     public static final int DIGITAL_ITEM_CATEGORY_ID = 7889;

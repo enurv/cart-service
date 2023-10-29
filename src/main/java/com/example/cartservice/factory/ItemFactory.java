@@ -22,7 +22,9 @@ public class ItemFactory {
     }
 
     public VasItem createVasItem(VasItemDTO vasItemDto) {
-        if (vasItemDto.categoryId == Constants.VAS_ITEM_CATEGORY_ID && vasItemDto.sellerId == Constants.VAS_ITEM_SELLER_ID) {
+        if (vasItemDto.quantity > 1) {
+            throw new InvalidVasItemException("You cannot add more than 1 quantity of a vas item.");
+        } else if (vasItemDto.categoryId == Constants.VAS_ITEM_CATEGORY_ID && vasItemDto.sellerId == Constants.VAS_ITEM_SELLER_ID) {
             return new VasItem(vasItemDto.itemId, vasItemDto.vasItemId, vasItemDto.price, vasItemDto.categoryId, vasItemDto.sellerId, vasItemDto.quantity);
         } else {
             throw new InvalidVasItemException("Invalid VAS item");

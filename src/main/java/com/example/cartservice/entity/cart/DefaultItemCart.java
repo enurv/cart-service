@@ -1,8 +1,10 @@
 package com.example.cartservice.entity.cart;
 
+import com.example.cartservice.Constants;
 import com.example.cartservice.entity.item.DefaultItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.item.VasItem;
+import com.example.cartservice.exception.MaximumPriceLimitExceededException;
 import com.example.cartservice.exception.NonCompatibleItemTypeException;
 import com.example.cartservice.service.promotion.PromotionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,6 @@ public class DefaultItemCart extends Cart {
         } else {
             throw new NonCompatibleItemTypeException("You are trying to add a digital item to a default item cart");
         }
-        calculateTotalPrice();
-        calculateDiscount();
     }
 
     private void addDefaultItem(DefaultItem newDefaultItem) {
@@ -42,6 +42,12 @@ public class DefaultItemCart extends Cart {
     private void addVasItem(VasItem newVasItem) {
         DefaultItem defaultItem = (DefaultItem) findItemById(newVasItem.getId());
         defaultItem.addVasItem(newVasItem);
+        calculatePrices();
+        if (isPriceLimitExceeded()) {
+            defaultItem.removeVasItem(newVasItem.getId());
+            calculatePrices();
+            throw new MaximumPriceLimitExceededException("You cannot add more than " + Constants.MAX_PRICE + " price.");
+        }
     }
 
 

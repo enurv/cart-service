@@ -29,8 +29,6 @@ public class DigitalItemCart extends Cart {
         } else {
             throw new NonCompatibleItemTypeException("You are trying to add a default item to a digital item cart.");
         }
-        calculateTotalPrice();
-        calculateDiscount();
     }
 
 
