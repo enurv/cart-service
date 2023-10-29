@@ -51,6 +51,13 @@ public abstract class Cart {
         return null;
     }
 
+    public void resetCart() {
+        items.clear();
+        promotion = null;
+        totalDiscount = 0;
+        totalPrice = 0;
+    }
+
     public double getTotalPrice() {
         return totalPrice;
     }

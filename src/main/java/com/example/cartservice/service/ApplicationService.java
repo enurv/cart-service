@@ -47,6 +47,7 @@ public class ApplicationService {
     }
 
     public void resetCart() {
+        cart.resetCart();
         cart = null;
     }
 
