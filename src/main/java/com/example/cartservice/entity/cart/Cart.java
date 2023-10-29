@@ -34,7 +34,7 @@ public abstract class Cart {
 
     protected void addExistingItem(Item existingItem, Item newItem) {
         if (items.stream().reduce(0, (subtotal, element) -> subtotal + element.getQuantity(), Integer::sum) + newItem.getQuantity() > Constants.MAX_ITEM_NUMBER) {
-            throw new MaximumItemLimitExceededException("You cannot add more than " + Constants.MAX_ITEM_NUMBER + " of the same item.");
+            throw new MaximumItemLimitExceededException("You cannot add more than " + Constants.MAX_ITEM_NUMBER + " items.");
         } else {
             existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
             calculatePrices();
@@ -96,6 +96,9 @@ public abstract class Cart {
     }
 
     public int getPromotionId() {
+        if (promotion == null) {
+            return 0;
+        }
         return promotion.getPromotionId();
     }
 
