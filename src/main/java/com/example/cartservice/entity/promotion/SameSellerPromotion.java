@@ -21,16 +21,14 @@ public class SameSellerPromotion extends Promotion {
     }
 
     public boolean itemsFromSameSellerId(List<Item> items) {
-        if (items.size() > 1) {
-            int firstSellerId = items.get(0).getSellerId();
-
-            return items.stream()
-                    .map(Item::getSellerId)
-                    .allMatch(sellerId -> sellerId.equals(firstSellerId));
-        } else {
+        if (items.isEmpty()) {
             return false;
         }
 
+        int firstSellerId = items.get(0).getSellerId();
 
+        return items.stream()
+                .map(Item::getSellerId)
+                .allMatch(sellerId -> sellerId.equals(firstSellerId));
     }
 }
