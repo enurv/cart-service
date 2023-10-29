@@ -37,6 +37,7 @@ public abstract class Cart {
             throw new MaximumItemLimitExceededException("You cannot add more than " + Constants.MAX_ITEM_NUMBER + " of the same item.");
         } else {
             existingItem.setQuantity(newItem.getQuantity() + existingItem.getQuantity());
+            calculatePrices();
         }
     }
 
@@ -45,6 +46,7 @@ public abstract class Cart {
             throw new MaximumUniqueItemLimitExceededException("You cannot add more than " + Constants.MAX_UNIQUE_ITEM_NUMBER + " unique items.");
         } else {
             items.add(newItem);
+            calculatePrices();
         }
         calculatePrices();
         if (isPriceLimitExceeded()) {
@@ -64,7 +66,7 @@ public abstract class Cart {
     protected abstract void calculateTotalPrice();
 
     protected boolean isPriceLimitExceeded() {
-        return totalPrice - totalDiscount > Constants.MAX_PRICE;
+        return finalPrice > Constants.MAX_PRICE;
     }
 
     public void resetCart() {
