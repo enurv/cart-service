@@ -26,7 +26,8 @@ public class DefaultItemCart extends Cart {
         } else {
             throw new NonCompatibleItemTypeException("You are trying to add a digital item to a default item cart");
         }
-        selectPromotion();
+        calculateTotalPrice();
+        calculateDiscount();
     }
 
     private void addDefaultItem(DefaultItem newDefaultItem) {
@@ -50,8 +51,9 @@ public class DefaultItemCart extends Cart {
     }
 
     @Override
-    protected void selectPromotion() {
-        promotionService.selectBestPromotion(this);
+    protected void calculateDiscount() {
+        promotion = promotionService.selectBestPromotion(this);
+        totalDiscount = promotion.calculateDiscount(this);
     }
 
     @Override

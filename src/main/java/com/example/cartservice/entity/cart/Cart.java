@@ -61,7 +61,7 @@ public abstract class Cart {
         return totalPrice;
     }
 
-    protected abstract void selectPromotion();
+    protected abstract void calculateDiscount();
 
     protected abstract void calculateTotalPrice();
 
