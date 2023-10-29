@@ -63,14 +63,14 @@ public class ApplicationService {
                     .stream()
                     .map(item -> new DigitalItemDTO(item.getId(), item.getCategoryId(), item.getSellerId(), item.getPrice(), item.getQuantity()))
                     .toList();
-            DigitalItemCartDTO cartDto = new DigitalItemCartDTO(digitalItemDTOs, cart.getTotalPrice(), cart.getPromotionId(), cart.getTotalDiscount());
+            DigitalItemCartDTO cartDto = new DigitalItemCartDTO(digitalItemDTOs, cart.getFinalPrice(), cart.getPromotionId(), cart.getTotalDiscount());
             return new CartDisplayDTO(true, cartDto);
         } else {
             List<DefaultItemDTO> defaultItemDTOs = cart.getItems()
                     .stream()
                     .map(item -> new DefaultItemDTO((DefaultItem) item))
                     .toList();
-            DefaultItemCartDTO cartDto = new DefaultItemCartDTO(defaultItemDTOs, cart.getTotalPrice(), cart.getPromotionId(), cart.getTotalDiscount());
+            DefaultItemCartDTO cartDto = new DefaultItemCartDTO(defaultItemDTOs, cart.getFinalPrice(), cart.getPromotionId(), cart.getTotalDiscount());
             return new CartDisplayDTO(true, cartDto);
         }
     }

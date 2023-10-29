@@ -18,6 +18,9 @@ public abstract class Cart {
     protected double totalPrice;
     protected Promotion promotion;
     protected double totalDiscount;
+
+    protected double finalPrice;
+
     protected List<Item> items = new ArrayList<Item>();
 
     protected Item findItemById(int id) {
@@ -74,6 +77,20 @@ public abstract class Cart {
     protected void calculatePrices() {
         calculateTotalPrice();
         calculateDiscount();
+        setFinalPrice();
+    }
+
+    public double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice() {
+        double price = totalPrice - totalDiscount;
+        if (price > 0) {
+            this.finalPrice = price;
+        } else {
+            this.finalPrice = 0;
+        }
     }
 
     public int getPromotionId() {
