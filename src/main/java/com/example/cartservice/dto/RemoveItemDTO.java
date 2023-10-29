@@ -6,4 +6,7 @@ public class RemoveItemDTO {
     public RemoveItemDTO(int itemId) {
         this.itemId = itemId;
     }
+
+    public RemoveItemDTO() {
+    }
 }
