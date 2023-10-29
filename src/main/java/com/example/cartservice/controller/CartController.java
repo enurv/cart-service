@@ -25,7 +25,14 @@ public class CartController {
 
     @PostMapping("/item/add/vas")
     public ResponseEntity<ResponseDTO> addVasItem(@RequestBody VasItemDTO newVasItem) {
+        applicationService.addVasItem(newVasItem);
         return ResponseEntity.ok(new ResponseDTO(true, "VasItem added to cart"));
+    }
+
+    @DeleteMapping("/cartReset")
+    public ResponseEntity<ResponseDTO> resetCart() {
+        applicationService.resetCart();
+        return ResponseEntity.ok(new ResponseDTO(true, "Cart reset successfully"));
     }
 
 
