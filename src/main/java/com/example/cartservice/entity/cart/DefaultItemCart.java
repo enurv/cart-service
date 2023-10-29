@@ -1,7 +1,5 @@
 package com.example.cartservice.entity.cart;
 
-
-import com.example.cartservice.Constants;
 import com.example.cartservice.entity.item.DefaultItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.item.VasItem;
@@ -41,8 +39,18 @@ public class DefaultItemCart extends Cart {
     }
 
     @Override
-    protected void selectPromotion() {
-
+    protected void calculateTotalPrice() {
+        totalPrice = items.stream()
+                .map(item -> (DefaultItem) item)
+                .mapToDouble(defaultItem -> {
+                    double defaultItemPrice = defaultItem.getPrice() * defaultItem.getQuantity();
+                    double vasItemsPrice = defaultItem.getVasItems().stream()
+                            .mapToDouble(vasItem -> vasItem.getPrice() * vasItem.getQuantity())
+                            .sum();
+                    return defaultItemPrice + vasItemsPrice;
+                })
+                .sum();
     }
+
 
 }

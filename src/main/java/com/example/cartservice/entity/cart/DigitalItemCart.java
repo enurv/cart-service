@@ -1,6 +1,5 @@
 package com.example.cartservice.entity.cart;
 
-import com.example.cartservice.Constants;
 import com.example.cartservice.entity.item.DigitalItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.exception.NonCompatibleItemTypeException;
@@ -27,8 +26,10 @@ public class DigitalItemCart extends Cart {
     }
 
     @Override
-    protected void selectPromotion() {
-
+    protected void calculateTotalPrice() {
+        totalPrice = items.stream()
+                .mapToDouble(item -> item.getPrice() * item.getQuantity())
+                .sum();
     }
 
 
