@@ -1,9 +1,7 @@
 package com.example.cartservice.entity.promotion;
 
 import com.example.cartservice.Constants;
-import com.example.cartservice.entity.item.Item;
-
-import java.util.List;
+import com.example.cartservice.entity.cart.Cart;
 
 public class SameSellerPromotion extends Promotion {
     public SameSellerPromotion() {
@@ -11,7 +9,7 @@ public class SameSellerPromotion extends Promotion {
     }
 
     @Override
-    public double calculateDiscount(List<Item> items) {
+    public double calculateDiscount(Cart cart) {
         return 0;
     }
 }

@@ -4,10 +4,19 @@ import com.example.cartservice.entity.item.DefaultItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.item.VasItem;
 import com.example.cartservice.exception.NonCompatibleItemTypeException;
+import com.example.cartservice.service.promotion.PromotionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DefaultItemCart extends Cart {
+    PromotionService promotionService;
+
+    @Autowired
+    public DefaultItemCart(PromotionService promotionService) {
+        this.promotionService = promotionService;
+    }
+
     @Override
     public void addItem(Item newItem) {
         if (newItem instanceof DefaultItem) {
@@ -17,6 +26,7 @@ public class DefaultItemCart extends Cart {
         } else {
             throw new NonCompatibleItemTypeException("You are trying to add a digital item to a default item cart");
         }
+        selectPromotion();
     }
 
     private void addDefaultItem(DefaultItem newDefaultItem) {
@@ -37,6 +47,11 @@ public class DefaultItemCart extends Cart {
     @Override
     public void removeItem(Item item) {
 
+    }
+
+    @Override
+    protected void selectPromotion() {
+        promotionService.selectBestPromotion(this);
     }
 
     @Override
