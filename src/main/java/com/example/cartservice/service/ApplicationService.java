@@ -42,8 +42,8 @@ public class ApplicationService {
         cart = cartFactory.createCart(categoryId);
     }
 
-    public void removeItem(ItemDTO item) {
-        cart.removeItem(item.itemId);
+    public void removeItem(int itemId) {
+        cart.removeItem(itemId);
         if (cart.getItems().isEmpty()) {
             resetCart();
         }
