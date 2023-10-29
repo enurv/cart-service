@@ -29,7 +29,7 @@ public class CartController {
         return ResponseEntity.ok(new ResponseDTO(true, "VasItem added to cart"));
     }
 
-    @DeleteMapping("/cartReset")
+    @DeleteMapping("/cart/reset")
     public ResponseEntity<ResponseDTO> resetCart() {
         applicationService.resetCart();
         return ResponseEntity.ok(new ResponseDTO(true, "Cart reset successfully"));
