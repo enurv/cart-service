@@ -55,6 +55,9 @@ public class ApplicationService {
     }
 
     public CartDTO displayCart() {
+        if (cart == null) {
+            return new CartDTO(false, null);
+        }
         if (cart instanceof DigitalItemCart) {
             List<DigitalItemDTO> digitalItemDTOs = cart.getItems()
                     .stream()
