@@ -1,0 +1,312 @@
+{
+	"info": {
+		"_postman_id": "62cc26bb-d2aa-4dd6-85ef-7a7e23cade38",
+		"name": "cart-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6765818"
+	},
+	"item": [
+		{
+			"name": "add digital item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 101,\r\n    \"categoryId\": 7889,\r\n    \"sellerId\": 1002,\r\n    \"price\": 2001,\r\n    \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/add",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove digital item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 101,\r\n    \"categoryId\": 7889,\r\n    \"sellerId\": 1001,\r\n    \"price\": 10,\r\n    \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/remove",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"remove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove default item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 101,\r\n    \"categoryId\": 7889,\r\n    \"sellerId\": 1001,\r\n    \"price\": 10,\r\n    \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/remove",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"remove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add default item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 1,\r\n    \"categoryId\": 3456,\r\n    \"sellerId\": 1001,\r\n    \"price\": 100,\r\n    \"quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/add",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add default item furniture",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 201,\r\n    \"categoryId\": 1001,\r\n    \"sellerId\": 1001,\r\n    \"price\": 100,\r\n    \"quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/add",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add default item electronics",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 202,\r\n    \"categoryId\": 3004,\r\n    \"sellerId\": 1001,\r\n    \"price\": 100,\r\n    \"quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/add",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add vasitem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 202,\r\n    \"vasItemId\": 10001,\r\n    \"categoryId\": 3242,\r\n    \"sellerId\": 5003,\r\n    \"price\": 100,\r\n    \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/add/vas",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"add",
+						"vas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add vasitem invalid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 202,\r\n    \"vasItemId\": 10001,\r\n    \"categoryId\": 3242,\r\n    \"sellerId\": 5003,\r\n    \"price\": 100,\r\n    \"quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/items/add/vas",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"items",
+						"add",
+						"vas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 1,\r\n    \"categoryId\": 3456,\r\n    \"sellerId\": 1001,\r\n    \"price\": 100,\r\n    \"quantity\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/cart/reset",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"cart",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "display cart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 1,\r\n    \"categoryId\": 3456,\r\n    \"sellerId\": 1001,\r\n    \"price\": 100,\r\n    \"quantity\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/cart/display",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"cart",
+						"display"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		}
+	]
+}
