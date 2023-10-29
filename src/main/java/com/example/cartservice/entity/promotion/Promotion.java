@@ -1,5 +1,9 @@
 package com.example.cartservice.entity.promotion;
 
+import com.example.cartservice.entity.item.Item;
+
+import java.util.List;
+
 public abstract class Promotion {
     protected int promotionId;
 
@@ -7,5 +11,5 @@ public abstract class Promotion {
         return promotionId;
     }
 
-    public abstract double getDiscount();
+    public abstract double calculateDiscount(List<Item> items);
 }

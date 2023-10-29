@@ -5,6 +5,7 @@ import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.promotion.Promotion;
 import com.example.cartservice.exception.MaximumItemLimitExceededException;
 import com.example.cartservice.exception.MaximumUniqueItemLimitExceededException;
+import com.example.cartservice.service.promotion.PromotionServiceProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +55,11 @@ public abstract class Cart {
         return totalPrice;
     }
 
-    protected abstract void selectPromotion();
-
-    protected void calculateTotalPrice() {
+    protected void selectPromotion() {
+        promotion = PromotionServiceProvider.getPromotionService().selectBestPromotion(items);
+        totalDiscount = promotion.calculateDiscount(items);
     }
+
+    protected abstract void calculateTotalPrice();
 
 }
