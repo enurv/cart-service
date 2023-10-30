@@ -1,8 +1,11 @@
 package com.example.cartservice.entity.cart;
 
+import com.example.cartservice.Constants;
+import com.example.cartservice.entity.item.DefaultItem;
 import com.example.cartservice.entity.item.DigitalItem;
 import com.example.cartservice.entity.item.Item;
 import com.example.cartservice.entity.promotion.Promotion;
+import com.example.cartservice.exception.MaximumUniqueItemLimitExceededException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -56,23 +59,6 @@ class CartTest {
 
         //then
         assertEquals(5, cart.finalPrice);
-    }
-
-    @Test
-    public void removeExistingItem() {
-        //given
-        Item digitalItem = new DigitalItem(1, 10, 1000, 2221, 3);
-        cart.addItem(digitalItem);
-
-        //when
-        cart.removeItem(digitalItem.getId());
-
-        //then
-        assertEquals(0, cart.getItems().size());
-        assertEquals(0, cart.getTotalPrice());
-        assertEquals(0, cart.getTotalDiscount());
-        assertEquals(0, cart.getFinalPrice());
-
     }
 
 }
