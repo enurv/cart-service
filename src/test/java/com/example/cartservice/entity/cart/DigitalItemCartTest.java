@@ -20,9 +20,8 @@ class DigitalItemCartTest {
     @BeforeEach
     public void setUp() {
         Mockito.when(mockPromotion.calculateDiscount(Mockito.any(DigitalItemCart.class))).thenReturn(5.0);
-        promotionServiceMock = Mockito.mock(PromotionService.class).when(promotionServiceMock.selectBestPromotion(Mockito.any(DigitalItemCart.class))).thenReturn(mockPromotion);
+        Mockito.when(promotionServiceMock.selectBestPromotion(Mockito.any(DigitalItemCart.class))).thenReturn(mockPromotion);
         digitalItemCart = new DigitalItemCart(promotionServiceMock);
     }
-
 
 }
