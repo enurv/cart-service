@@ -74,6 +74,7 @@ public abstract class Cart {
         promotion = null;
         totalDiscount = 0;
         totalPrice = 0;
+        finalPrice = 0;
     }
 
     protected void calculatePrices() {
