@@ -21,7 +21,7 @@ public class VasItemDTO {
     }
 
     public VasItemDTO(VasItem vasItem) {
-        this.itemId = vasItem.getVasItemId();
+        this.itemId = vasItem.getId();
         this.vasItemId = vasItem.getVasItemId();
         this.categoryId = vasItem.getCategoryId();
         this.sellerId = vasItem.getSellerId();
